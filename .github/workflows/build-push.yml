@@ -38,11 +38,11 @@ jobs:
         run: |
           echo "repository=${GITHUB_REPOSITORY@L}" >> $GITHUB_OUTPUT
 
-      - name: Build and push Backend
+      - name: Build and push
         uses: docker/build-push-action@v7
         with:
           context: .
-          file: ./backend/Dockerfile
+          file: ./Dockerfile
           push: true
           tags: ghcr.io/${{ steps.lower-repo.outputs.repository }}:${{ steps.extract_tag.outputs.tag }}
           platforms: linux/amd64,linux/arm64/v8
